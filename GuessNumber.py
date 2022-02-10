@@ -1,18 +1,26 @@
+#Number Guessing
 import random
 a = random.randint(0,9999)
 number=str(a)
 def coincidences(user_number, number):
     cont_num=0;
     cont_pos=0;
+    
+    #Positions
+    for i in range(0,len(user_number)):
+        for j in range(0,len(number)):
+            if user_number[i] == number[j] and j==i:
+                    cont_pos+=1;
+    
+    #Digits
     for i in range(0,len(user_number)):
         for j in range(0,len(number)):
             if user_number[i] == number[j]:
-                #user_number = user_number.replace(user_number[i],'-')
-                #print(user_number)
-                number = number.replace(number[j],'-')
+                user_number = user_number.replace(user_number[i],'-')
+                number = number.replace(number[j],'o')
                 cont_num+=1;
-                if j==i:
-                    cont_pos+=1;
+                break
+                
     
     if cont_pos==4:
         print('Congrants, u win:)')
