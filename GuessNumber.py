@@ -1,19 +1,51 @@
 import random
 a = random.randint(0,9999)
 number=str(a)
-print(number)
+def coincidences(user_number, number):
+    cont_num=0;
+    cont_pos=0;
+    for i in range(0,len(user_number)):
+        for j in range(0,len(number)):
+            if user_number[i] == number[j]:
+                #user_number = user_number.replace(user_number[i],'-')
+                #print(user_number)
+                number = number.replace(number[j],'-')
+                cont_num+=1;
+                if j==i:
+                    cont_pos+=1;
+    
+    if cont_pos==4:
+        print('Congrants, u win:)')
+    else:
+        print('Correct digits:',cont_num)
+        print('Correct positions:',cont_pos)
+    
+            
 
 if len(number)==4:
-	number=number
+    number=number
 elif len(number)==3:
-		number='0' + number
+    number='0' + number
 elif len(number)==2:
-	number='00' + number
+    number='00' + number
 elif len(number)==1:
-	number='000' + number
+    number='000' + number
 
-print(number)	
-# for i in numbers:
-# 	digits[i]=numbers[i]
-# print(digits)
-print("_ _ _ _")
+print(number)
+user_number=''
+
+while user_number !=number:
+    user_number = str(input("Introduce a possible number: "))
+    
+    if len(user_number )==4:
+        user_number =user_number 
+    elif len(user_number )==3:
+        user_number='0' + user_number 
+    elif len(number)==2:
+        user_number ='00' + user_number 
+    elif len(number)==1:
+        user_number ='000' + user_number
+    
+    coincidences(user_number, number)
+    a=user_number
+    #user_number= number
